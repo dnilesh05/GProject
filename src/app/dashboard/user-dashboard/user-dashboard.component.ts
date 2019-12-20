@@ -12,7 +12,7 @@ export class UserDashboardComponent implements OnInit {
   editPostDetails:TableData;
   tableData:TableData[]=[
     {
-    title:"C language",
+    title:"C language-yashwant",
     source:"c publication",
     author:"Denis",
     image:"No image url",
@@ -65,7 +65,7 @@ export class UserDashboardComponent implements OnInit {
 
   },
   {
-    title:"C language",
+    title:"C language by denis",
     source:"c publication",
     author:"Denis",
     image:"No image url",
@@ -74,7 +74,7 @@ export class UserDashboardComponent implements OnInit {
 
   },
   {
-    title:"C language",
+    title:"Java language by patric",
     source:"c publication",
     author:"Denis",
     image:"No image url",
@@ -123,6 +123,10 @@ export class UserDashboardComponent implements OnInit {
    this.editPostDetails=item;
    console.log(this.editPostDetails);
     $('#editModal').modal('show');
+  }
+  deletePost(){
+    console.log(this.editPostDetails);
+    $('#deleteModal').modal('show');
   }
 
 }

@@ -52,10 +52,13 @@
         <table class="table table-striped">
         <thead>
             <tr>
-                <th style="width: 5%">
+                <th style="width: 3%">
                     Id
                 </th>
-                <th style="width: 25%">
+                <th style="width: 8%">
+                    Date
+                </th>
+                <th style="width: 23%">
                     Title
                 </th>
                 <th style="width: 15%">
@@ -67,17 +70,20 @@
                  <th style="width: 15%">
                     Image
                  </th>
-                 <th style="width: 10%">
+                 <th style="width: 8%">
                     Organisation
                  </th>
-                 <th style="width: 20%">
+                 <th style="width: 18%">
                     Action
                  </th>
              </tr>
         </thead>
-        <tr *ngFor="let item of tableData;let i = index;">
+        <tr *ngFor="let item of tableData;let i = index;" style="font-size: 14px;">
             <td>
                 {{i}}
+            </td>
+            <td>
+                3-6-19
             </td>
             <td>
                 {{item.title}}
@@ -94,12 +100,18 @@
             <td>
                 {{item.organisation}}
             </td>
-            <td>
-                <span style="border: 1px solid;padding: 3px 15px;margin: 0 3px;cursor: pointer;" (click)="editPost(item)">
-                    Edit 
-                </span>
+            <td style="font-size: 12px;">
                 <span style="border: 1px solid;padding: 3px 10px;margin: 0 3px;">
-                    Delete 
+                    <!-- Publish -->
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                </span>
+                <span style="border: 1px solid;padding: 3px 10px;margin: 0 3px;cursor: pointer;" (click)="editPost(item)">
+                    <!-- Edit  -->
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </span>
+                <span style="border: 1px solid;padding: 3px 10px;margin: 0 3px;" (click)="deletePost(item)">
+                    <!-- Delete  -->
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </span>
             </td>
         </tr>
@@ -134,8 +146,16 @@
                         <input type="text" class="form-control" placeholder="Enter Organisation" name="Organisation" [(ngModel)]="editPostDetails.organisation">
                 </div>
                 <div class="form-group">
+                    <label for="Organisation">Image:</label>
+                    <input type="file" class="form-control" placeholder="Enter Organisation" name="youtube" [(ngModel)]="editPostDetails.organisation">
+                </div>
+                <div class="form-group">
+                    <label for="Organisation">Youtube Link:</label>
+                    <input type="text" class="form-control" placeholder="Enter Organisation" name="youtube" [(ngModel)]="editPostDetails.organisation">
+                </div>
+                <div class="form-group">
                     <label for="body">Post Details:</label>
-                    <input type="text" class="form-control" placeholder="Enter post details" name="body" [(ngModel)]="editPostDetails.body">
+                    <textarea type="text" class="form-control" placeholder="Enter post details" name="body" [(ngModel)]="editPostDetails.body"></textarea>
                 </div>               
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -148,3 +168,25 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="modal" id="deleteModal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Details</h4>
+            </div>    
+            <!-- Modal body -->
+            <div class="modal-body">
+              <h6>Are you sure you want to delete it.</h6>
+            </div>    
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a  class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
+        
+            </div>
+        </div>
+    </div>
