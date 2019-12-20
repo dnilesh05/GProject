@@ -1,0 +1,130 @@
+<div class="container-fluid">
+  <div class="row loginBoxHeight" *ngIf="!verifyUserOtp">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 ">
+          <div class="loginbox card">
+            <div class="loginBoxHeading">
+              Sign into GProject
+            </div>
+            <form #frm="ngForm" (ngSubmit)="onSubmit(frm)" style="padding: 0 10px 10px 10px;">
+               <div class="form-group">
+                <label class="field-label" for="email">Email address *</label>
+                <input type="email" class="form-control form-control-sm field-label" id="email"
+                  aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off" name="email" ngModel required
+                  #userEmail="ngModel" pattern="[a-zA-Z0-9_+-]+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{1,20}$" />
+              </div>
+              <div *ngIf="userEmail.touched && userEmail.errors" class="">
+                <div class="login-error-msg" *ngIf="userEmail.errors?.required">
+                  Email is required !
+                </div>
+                <div class="login-error-msg" *ngIf="userEmail.errors?.pattern">
+                  Invalid email !
+                </div>
+              </div>
+              <label class="field-label" for="password">Password *</label>
+              <div class="form-group input-group">
+                <input [type]="showPassword?'text':'password'" class="form-control form-control-sm field-label"
+                  id="password" placeholder="Password" autocomplete="off" name="password" ngModel required
+                  #userPassword="ngModel" />
+                <!-- <div class="input-group-append">
+                  <span class="input-group-text" (click)="showPassword =!showPassword">
+                    <i class="fa fa-fw  field-icon" [ngClass]="{'fa-eye-slash':!showPassword,'fa-eye':showPassword}"
+                      aria-hidden="true"></i></span>
+                </div> -->
+              </div>
+              <!-- <div *ngIf="iscaps && userPassword!=''" class="login-error-msg">
+                <span class="login-error-msg">{{iscaps?'CAPSLOCK IS ON':'No CapsLock'}}</span>
+              </div> -->
+              <div *ngIf="userPassword.touched && userPassword.errors" class="">
+                <div class="login-error-msg" *ngIf="userPassword.errors?.required">
+                  Password is required !
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-6" style=" font-family: Roboto;color: #9b9b9b;">
+                  <a class="routeLink" (click)="forgotPage()"><u style="text-decoration: underline;color: blue;">Forgot
+                      password?</u></a>
+                </div>
+                <div class="col-sm-6 loginBoxTextRight " *ngIf="!serverResponse">
+                  <button type="submit" [disabled]="frm.invalid" class="btn loginBtn">
+                    Sign In
+                  </button>
+                </div>
+                <div class="col-sm-6 loginBoxTextRight" *ngIf="serverResponse">
+                  <button class="btn loginBtn">
+                    <i class="fa fa-circle-o-notch fa-spin"></i> Sign In
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="loginBoxTextCenter">
+        <p class="field-label" style="font-size:14px;margin-top: 10px; font-family: Roboto;color: #9b9b9b;">
+          <a class="routeLink" (click)="registerPage()" style="text-decoration: underline;
+          color: blue;">Don't have an account? Sign Up</a>
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-sm-4"></div>
+  </div> 
+  <!-- verify user active or not -->
+  <div class="row loginBoxHeight" *ngIf="verifyUserOtp">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-12 col-md-12 col-lg-8 ">
+          <div style="text-align: center">
+            <img src="assets/images/color.png" class="img-responsive" />
+          </div>
+          <div class="loginbox card">
+            <div class="loginBoxHeading">
+              OTP Verification
+            </div>
+            <form  style="padding: 0 10px 10px 10px;">
+              <div class="form-group">
+                <label for="otpverification" style="margin-left: 2px;" class="">Please Enter OTP </label>
+                <input type="text" name="otpverification" id="otpverification"
+                  class="form-control form-control-sm field-label" placeholder="Enter your OTP" autocomplete="off" ngModel
+                  required #userOtpVerification="ngModel" maxlength="6" pattern=""
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+              </div>
+              <div *ngIf="userOtpVerification.touched && userOtpVerification.errors" class="">
+                <div class="login-error-msg" *ngIf="userOtpVerification.errors?.required">
+                  Otp is required !
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 center-block" *ngIf="!serverResponse1">
+                  <button type="button" [disabled]="frm.invalid" (click)="onSubmitCode(userOtpVerification.value)" style="background-color: #3284C7; 
+                  color: #ffffff" name="otpverify" class="btn loginBtn center-block pull-right block">
+                  Verify</button>
+                </div>
+                <div class="col-sm-12 center-block" *ngIf="serverResponse1">
+                  <button   style="background-color: #3284C7; 
+                  color: #ffffff" name="otpverify" class="btn loginBtn center-block pull-right block">
+                    <i class="fa fa-circle-o-notch fa-spin" ></i>Verify</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="loginBoxTextCenter">
+        <p class="field-label" style="font-size:14px;margin-top: 10px; font-family: Roboto;color: #9b9b9b;">
+          <a class="routeLink" (click)="Otpsend()" style="text-decoration: underline;
+          color: blue;cursor: pointer;">Resend OTP</a>
+        </p>
+      </div>
+    </div>  
+    <div class="col-sm-4"></div>
+  </div>
+</div>

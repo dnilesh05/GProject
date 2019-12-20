@@ -1,0 +1,89 @@
+.sellerlogin {
+    background: #f3f3f3;
+  }
+  .loginBoxHeight {
+    margin: 75px 0 0 0;
+  }
+  .loginbox {
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+    /* box-shadow: 0px 1px 3px 3px rgba(0, 0, 0, 0.16),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.23); */
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.16),
+      0px 0px 0px 0px rgba(0, 0, 0, 0.23);
+    font-size: 12px;
+    margin-top: 25px;
+  }
+  .loginBoxHeading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    color: #4a4a4a;
+    font-family: Roboto;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+  }
+  .loginBoxTextRight {
+    text-align: right;
+  }
+  .loginBoxTextCenter {
+    text-align: center;
+  }
+  .loginBtn {
+    background: #3284c7;
+    color: #fff;
+    font-size: 12px;
+  }
+  .loginBtn:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+  
+  .login-error-msg {
+    color: red;
+    font-size: 12px;
+    margin: -10px 0 5px 0;
+  }
+  .routeLink:hover {
+    cursor: pointer;
+  }
+  
+  .loginbox .field-label {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: #9b9b9b;
+  }
+  
+  .loader {
+    border: 5px solid #3498db;
+    border-radius: 50%;
+    border-top: 5px solid #f3f3f3;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
